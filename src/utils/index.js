@@ -4,7 +4,7 @@
 export default {
     install (Vue) {
         let VuePrototype = Vue.prototype
-        VuePrototype.$getData = function (data) {
+        VuePrototype.$tools = function (data) {
             console.log(data)
         }
         // 配置公共信息

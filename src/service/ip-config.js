@@ -3,7 +3,7 @@
  */
 let baseUrl = {}
 
-console.log(process.env)
+// console.log(process.env)
 
 switch (process.env.NODE_ENV) {
     // dev环境
@@ -12,6 +12,7 @@ switch (process.env.NODE_ENV) {
             basicApi: 'http://localhost:8080'
         }
         break
+    // 其它打包环境
     default:
         baseUrl = {
             basicApi: process.env.VUE_APP_BASEURL
