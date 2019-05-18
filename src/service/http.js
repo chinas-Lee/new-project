@@ -15,7 +15,7 @@ Object.assign(axios.defaults.headers, {
 axios.interceptors.request.use((req) => {
     // 参数序列化处理
     req.data && (req.data = JSON.stringify(req.data))
-    console.log(req)
+    // console.log(req)
     return req
 }, (error) => {
     return Promise.reject(error)
@@ -26,7 +26,7 @@ axios.interceptors.response.use((res) => {
     if (!res) {
         return Promise.reject(res)
     }
-    console.log(res)
+    // console.log(res)
     return res
 }, (error) => {
     return Promise.reject(error)

@@ -8,6 +8,12 @@ module.exports = {
         port: 8080,
         host: 'localhost',
         https: false,
-        open: false
+        open: false,
+        proxy: {
+            '/crm': {
+                target: 'http://mh.yigemed.com/dev/crm', //对应自己的接口
+                changeOrigin: true
+            }
+        }
     }
 }

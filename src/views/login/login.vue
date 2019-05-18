@@ -11,8 +11,6 @@
 </style>
 
 <script type="es6">
-    import { _checkEmail } from '../../assets/js/check-methods'
-    import { _getToken, _getSN } from '../../assets/js/user-methods'
     import { mapGetters, mapMutations } from 'vuex'
     export default {
         name: 'login',
@@ -23,14 +21,24 @@
             ...mapGetters(['loginStatus'])
         },
         created () {
-            console.log(_checkEmail('1212'))
-            console.log(this.loginStatus)
-            console.log(_getSN())
         },
         methods: {
             ...mapMutations({SET_LOGIN_STATUS: 'SET_LOGIN_STATUS'}),
-            handle () {
-                this.$ajax.login({userName: 'LCQ'})
+            async handle () {
+                try {
+                    let systemParams = {
+                        block: 'consultation',
+                        subType: 'reason'
+                    }
+                    let result = await Promise.all([
+                        this.$ajax.getMyHospital(),
+                        this.$ajax.getSystemConfig(systemParams)
+                    ])
+                    console.log(result)
+                    console.log(this.$tools.getDataType(result[0]))
+                } catch (e) {
+                    console.log(e)
+                }
             }
         }
     }

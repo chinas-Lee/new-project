@@ -9,7 +9,7 @@ switch (process.env.NODE_ENV) {
     // dev环境
     case 'development':
         baseUrl = {
-            basicApi: 'http://localhost:8080'
+            basicApi: 'http://mh.yigemed.com/dev/crm'
         }
         break
     // 其它打包环境
