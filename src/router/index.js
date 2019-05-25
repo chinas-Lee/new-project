@@ -3,18 +3,9 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-
-const Login = resolve => require(['@/views/login/login'], resolve)
+import routes from './router'
 
 Vue.use(Router)
-
-const routes = [
-    {
-        path: '/',
-        name: 'login',
-        component: Login
-    }
-]
 
 const router = new Router({
     mode: 'history', // history 模式，去掉地址栏中的#号

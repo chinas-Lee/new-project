@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<style>
+<style lang="scss" scoped >
 
 </style>
 
@@ -35,7 +35,7 @@
                         this.$ajax.getSystemConfig(systemParams)
                     ])
                     console.log(result)
-                    console.log(this.$tools.getDataType(result[0]))
+                    console.log(this)
                 } catch (e) {
                     console.log(e)
                 }
