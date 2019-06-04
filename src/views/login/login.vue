@@ -11,6 +11,7 @@
 </style>
 
 <script type="es6">
+    import Vue from 'vue'
     import { mapGetters, mapMutations } from 'vuex'
     export default {
         name: 'login',
@@ -35,7 +36,6 @@
                         this.$ajax.getSystemConfig(systemParams)
                     ])
                     console.log(result)
-                    console.log(this)
                 } catch (e) {
                     console.log(e)
                 }

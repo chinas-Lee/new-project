@@ -3,17 +3,16 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import routes from './router'
+import Routes from './routes'
+import BeforeEach from './before-each'
 
 Vue.use(Router)
 
 const router = new Router({
     mode: 'history', // history 模式，去掉地址栏中的#号
-    routes
+    routes: Routes
 })
 
-router.beforeEach((to, from, next) => {
-    next()
-})
+router.beforeEach(BeforeEach)
 
 export default router

@@ -5,16 +5,18 @@ import axios from 'axios'
 
 // 默认超时1H
 axios.defaults.timeout = 1000 * 600
+
 // 配置请求头
-Object.assign(axios.defaults.headers, {
+Object.assign(axios.defaults.headers.post, {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'X-Requested-With': 'XMLHttpRequest'
 })
+
 // request
-axios.interceptors.request.use((req) => {
-    // 参数序列化处理
-    req.data && (req.data = JSON.stringify(req.data))
+axios.interceptors.request.use(req => {
+    // 参数不为文件流，则序列化处理
+    Object.prototype.toString.call(req.data) !== '[object FormData]' && (req.data = JSON.stringify(req.data))
     // console.log(req)
     return req
 }, (error) => {
@@ -22,7 +24,7 @@ axios.interceptors.request.use((req) => {
 })
 
 // response
-axios.interceptors.response.use((res) => {
+axios.interceptors.response.use(res => {
     if (!res) {
         return Promise.reject(res)
     }

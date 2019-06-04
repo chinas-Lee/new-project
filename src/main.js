@@ -1,12 +1,13 @@
-import Vue from './init/index'
+import Vue from './init'
 import App from './App.vue'
-import router from './router/index'
-import store from './store/index'
+import router from './router'
+import store from './store'
 
 Vue.use(store)
+
 Vue.config.productionTip = false
 
-new Vue({
+let events = new Vue({
     render: h => h(App),
     router,
     store
