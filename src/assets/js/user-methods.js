@@ -4,7 +4,7 @@
 /*
 * 用户信息
 */
-import { _getSessionStorageObject, _getLocalStorage, _setLocalStorage, _getSessionStorage } from './storage-methods'
+import { _getSessionStorageObject, _getLocalStorage, _setLocalStorage } from './storage-methods'
 import crypto from 'crypto'
 import projectConfig  from '../../../project-config.json'
 
@@ -30,8 +30,8 @@ const _getSN = () => {
     try {
         resData.SN = _getLocalStorage('sn') || ''
         if (!resData.SN) {
-            const SN = `web_${Math.random().toString(36).substr(2, 15)}`
-            _setLocalStorage('sn', SN)
+            resData.SN = `web_${Math.random().toString(36).substr(2, 15)}`
+            _setLocalStorage('sn', resData.SN)
         }
     } catch (e) {
         console.log(e)
@@ -47,19 +47,30 @@ const _getSign = (api = '', data = {}, systemData = {}, isNoLogin = false) => {
         let { token } = _getToken()
         let { SN } = _getSN()
         let userData = _getSessionStorageObject('userData') || {}
-        let idToken = _getSessionStorage('idToken') || ''
         let params = {
             v: systemData.v || projectConfig.CR_V,
             osv: systemData.osv || '',
             dc: systemData.dc || 'h5',
             did: systemData.did || SN,
-            oid: !isNoLogin ? (systemData.openId || userData.openId || '') : '',
-            token: !isNoLogin ? (!systemData.openId && !userData.openId ? projectConfig.DEFAULT_TOKEN : '') : projectConfig.DEFAULT_TOKEN,
-            idToken: idToken,
             m: api,
             paramlist: JSON.stringify(data),
             ts: +new Date(),
-            at: 'crm'
+            at: 'd'
+        }
+        if (systemData && systemData.oid){
+            params.oid = systemData.oid
+        } else {
+            if (userData.oid) {
+                params.oid = userData.oid
+            } else {
+                params.oid = ''
+                params.token = projectConfig.DEFAULT_TOKEN
+            }
+        }
+        // 忽略登录
+        if (isNoLogin) {
+            params.oid = ""
+            params.token = projectConfig.DEFAULT_TOKEN
         }
         // 对参数的key进行排序
         let keyList = []
@@ -73,7 +84,7 @@ const _getSign = (api = '', data = {}, systemData = {}, isNoLogin = false) => {
             params[item].length !== 0 && (content += item + params[item])
         })
         content += token
-        let md = crypto.createHash('md5')
+        let md = crypto.createHash("md5");
         md.update(content)
         let sig = md.digest('hex')
         params.sig = sig.toUpperCase()

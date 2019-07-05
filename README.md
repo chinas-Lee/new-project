@@ -1,16 +1,17 @@
-# new-project
+# 项目架构模板
+## Vue-cli3.x + Vuex + Ant-design-vue + ES6 + ES7 + Sass
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 开发环境
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 普通生产环境
 ```
 npm run build
 ```
@@ -24,15 +25,15 @@ npm run test
 ```
 npm run lint
 ```
-### dev build
+### dev生产环境(.env.dev文件配置)
 ```
 npm run dev
 ```
-### pro build
+### pro生产环境(.pro.dev文件配置)
 ```
 npm run pro
 ```
-### online build
+### online生产环境(.online.dev文件配置)
 ```
 npm run online
 ```

@@ -4,8 +4,6 @@
 /**
  * 存储localStorage
  */
-import { _uniqueArray, _clearEmptyArray } from './object-methods'
-
 const _setLocalStorage = (name, content) => {
   if (!name) return false
   typeof content !== 'string' && (content = JSON.stringify(content))
@@ -46,10 +44,6 @@ const _removeLocalStorage = name => {
  */
 const _removeMultipleLocalStorage = (...args) => {
   if (args.length <= 0) return false
-  // 清空无效KEY
-  args = _clearEmptyArray(args) || []
-  // 去重参数
-  args = _uniqueArray(args) || []
   args.forEach((arg) => {
     window.localStorage.removeItem(arg)
   })
@@ -98,10 +92,6 @@ const _removeSessionStorage = name => {
  */
 const _removeMultipleSessionStorage = (...args) => {
   if (args.length <= 0) return false
-  // 清空无效KEY
-  args = _clearEmptyArray(args) || []
-  // 去重参数
-  args = _uniqueArray(args) || []
   args.forEach((arg) => {
     window.sessionStorage.removeItem(arg)
   })

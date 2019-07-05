@@ -1,9 +1,9 @@
 /**
  * Created by LCQ on 2019-05-13,0013.
  */
-import Vue from '../ant-components/index'
-import TopHeader from '../../components/TopHeader.vue'
+import Vue from '../element-components/index'
+import TopHeader from '../../components/top-header.vue'
 
-Vue.component('v-top-header', TopHeader)
+Vue.component('top-header', TopHeader)
 
 export default Vue
