@@ -8,5 +8,4 @@ const Config = {
     reqErrorMsg: '网络请求错误，请重试', // 网络接口请求错误提示
     closeMessageBoxTime: 3
 }
-
 export default Config

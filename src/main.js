@@ -7,7 +7,7 @@ Vue.use(store)
 
 Vue.config.productionTip = false
 
-new Vue({
+let events = new Vue({
     render: h => h(App),
     router,
     store

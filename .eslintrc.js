@@ -21,7 +21,7 @@ module.exports = {
         "no-alert": process.env.NODE_ENV === 'production' ? 2 : 0,
         "no-empty-function": 2,
         "space-before-function-paren": [2, "always"],
-        "space-in-parens": [2, "never"],
+        "space-in-parens": [2, "never"]
     },
     parserOptions: {
         parser: 'babel-eslint'

@@ -11,7 +11,7 @@
 <script type="es6">
     export default {
         name: 'topHeader',
-        data() {
+        data () {
             return {}
         },
         methods: {}
