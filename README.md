@@ -1,5 +1,5 @@
 # 项目架构模板
-## Vue-cli3.x + Vuex + Ant-design-vue + ES6 + ES7 + Sass
+## Vue-cli3.x + Vuex + Element + ES6 + ES7 + Sass
 
 ## Project setup
 ```
