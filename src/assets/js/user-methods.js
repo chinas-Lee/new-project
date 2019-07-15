@@ -49,13 +49,13 @@ const _getSign = (api = '', data = {}, systemData = {}, isNoLogin = false) => {
         let userData = _getSessionStorageObject('userData') || {}
         let params = {
             v: systemData.v || projectConfig.CR_V,
-            osv: systemData.osv || '',
-            dc: systemData.dc || 'h5',
+            osv: systemData.osv || projectConfig.OSV,
+            dc: systemData.dc || projectConfig.DC,
             did: systemData.did || SN,
             m: api,
             paramlist: JSON.stringify(data),
             ts: +new Date(),
-            at: 'd'
+            at: projectConfig.AT
         }
         if (systemData && systemData.oid){
             params.oid = systemData.oid
