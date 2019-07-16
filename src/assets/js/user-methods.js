@@ -6,7 +6,7 @@
 */
 import { _getSessionStorageObject, _getLocalStorage, _setLocalStorage } from './storage-methods'
 import crypto from 'crypto'
-import projectConfig  from '../../../project-config.json'
+import projectConfig from '../../../project-config.json'
 
 // 获取用户toKen
 const _getToken = () => {
