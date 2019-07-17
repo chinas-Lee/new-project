@@ -3,7 +3,7 @@
  */
 module.exports = {
     // 是否使用eslint
-    lintOnSave: true,
+    lintOnSave: 'error',
     // 如果您不需要生产时的源映射，那么将此设置为false可以加速生产构建
     productionSourceMap: false,
     // 配置全局样式变量
