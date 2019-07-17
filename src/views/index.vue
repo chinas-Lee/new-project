@@ -11,7 +11,7 @@ export default {
         return {}
     },
     created () {
-        console.log('created')
+        console.log(process.env)
     },
     mounted () {
         console.log('mounted')

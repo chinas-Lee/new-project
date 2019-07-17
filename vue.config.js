@@ -13,5 +13,9 @@ module.exports = {
                 data: `@import "@/assets/style/index.scss";`
             }
         }
+    },
+    chainWebpack: config => {
+        console.log(process.env.VUE_APP_NODE_ENV)
+        process.env.VUE_APP_NODE_ENV === 'production' && config.optimization.minimize(true)
     }
 }
