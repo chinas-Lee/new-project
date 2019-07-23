@@ -1,13 +1,11 @@
 /**
  * Created by LCQ on 2019-05-25,0025.
  */
-const Index = resolve => require(['../views/index'], resolve)
-
 const route = [
     {
         path: '/',
         name: 'Index',
-        component: Index,
+        component: resolve => require(['../views/index'], resolve),
         meta: {
             title: '首页'
         }

@@ -30,20 +30,20 @@ export function fetchData (api = '', bodyParams = {}, headParams = '', method = 
             let result = res.data || {}
             if (!result) {
                 reject(ConfigInfo.reqErrorMsg)
-                switch (+result.code) {
-                    case 0:
-                        resolve(result.data)
-                        break
-                    case -1:
-                        reject(result.msg || ConfigInfo.reqErrorMsg)
-                        break
-                    case -2:
-                        sessionStorage.clear()
-                        Router.push('/')
-                        break
-                    default:
-                        reject(result.msg || ConfigInfo.reqErrorMsg)
-                }
+            }
+            switch (+result.code) {
+                case 0:
+                    resolve(result.data)
+                    break
+                case -1:
+                    reject(result.msg || ConfigInfo.reqErrorMsg)
+                    break
+                case -2:
+                    sessionStorage.clear()
+                    Router.push('/')
+                    break
+                default:
+                    reject(result.msg || ConfigInfo.reqErrorMsg)
             }
         }, err => {
             console.log(err)
